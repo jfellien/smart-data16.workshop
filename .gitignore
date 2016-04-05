@@ -392,3 +392,6 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Exclude Application Files
+src/db_server/
