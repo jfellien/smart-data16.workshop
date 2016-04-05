@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_project", "_project", "{57F441DE-4963-4627-89E0-16798BBCC44C}"
 	ProjectSection(SolutionItems) = preProject
 		paket.dependencies = paket.dependencies
+		..\..\readme.md = ..\..\readme.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationHost", "ApplicationHost\ApplicationHost.csproj", "{CD72B2B2-2536-4625-BF40-8AA3F4024E4C}"
