@@ -1,0 +1,4 @@
+source "https://nuget.org/api/v2"
+
+nuget fluent-cqrs
+nuget nunit ~> 2.6
