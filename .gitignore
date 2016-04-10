@@ -395,3 +395,4 @@ jspm_packages
 
 # Exclude Application Files
 src/db_server/
+src/db_service/server-config.json

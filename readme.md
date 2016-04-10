@@ -5,7 +5,7 @@ Es wird eine CQRS Applikation gebaut, die als Datenbank eine OrientDB verwendet.
 ###Voraussetzungen
  
  * Installierte OrientDB
- * VisualStudio2013 oder höher
+ * VisualStudio 2013 oder höher
  * git Client
  * node.js 4.x Installation
  
@@ -35,10 +35,10 @@ Für die Applikation werden zwei Datenbanken benötigt, ein EventStore und die D
  * Der EventStore wird als Document DB angelegt, mit zwei Klassen
  * In der Web UI `NewDB` anklicken und mit dem root User und seinem Passwort (zu finden in der config/orientdb-server-config.xml) die DB anlegen
  * Als {document} für die Events eine neue Klasse `Event` ohne Properties anlegen
- * Für die Metadaten eines Events eine neue Klasse mit den folgenden Properties anlegen
+ * Für die Metadaten eines Events eine neue Klasse `EventBag` mit den folgenden Properties anlegen
     * Id STRING
     * Timestamp DateTime
-    * Type STRING
+    * EventType STRING
     * Payload EMBEDDED Event
 
 #####ReadModel
