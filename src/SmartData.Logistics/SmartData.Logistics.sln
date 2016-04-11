@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadModel", "ReadModel\ReadModel.csproj", "{F215EECA-8B00-4287-B4D3-1BACF95E48AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationDomain", "ApplicationDomain\ApplicationDomain.csproj", "{10CA18AC-FD67-4A6B-A392-F1267447D2B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F215EECA-8B00-4287-B4D3-1BACF95E48AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F215EECA-8B00-4287-B4D3-1BACF95E48AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F215EECA-8B00-4287-B4D3-1BACF95E48AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CA18AC-FD67-4A6B-A392-F1267447D2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CA18AC-FD67-4A6B-A392-F1267447D2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CA18AC-FD67-4A6B-A392-F1267447D2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CA18AC-FD67-4A6B-A392-F1267447D2B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

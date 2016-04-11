@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using ApplicationContracts;
+using ApplicationContracts.Commands;
+using ApplicationDomain;
 using ApplicationQueries;
+using Fluent_CQRS;
+using Infrastructure;
 using ReadModel;
 
 namespace ApplicationHost
 {
     class Program
     {
+        private static WarehouseCommands _warehouseCommands;
         private static Queries _queries;
 
         static void Main(string[] args)
@@ -23,6 +28,14 @@ namespace ApplicationHost
                     case ConsoleKey.P: // Produkte ansehen
                         var products = _queries.Products.All();
                         Show(products);
+                        break;
+                    case ConsoleKey.N: // Neues Produkt
+                        var product = Menus.EnterNewProduct();
+                        _warehouseCommands.Handle(new AddProduct
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Product = product
+                        });
                         break;
                     case ConsoleKey.L: // Lager ermitteln
                         var postZip = Menus.EnterYourPostZip();
@@ -77,7 +90,7 @@ namespace ApplicationHost
             Console.WriteLine("ID\t\tNAME");
 
             Console.WriteLine("{0}\t\t{1}", store.Id, store.Name);
-            
+
             Console.WriteLine();
             Console.WriteLine("Weiter mit <ENTER>");
             Console.ReadLine();
@@ -107,11 +120,18 @@ namespace ApplicationHost
 
         static void Bootstrap()
         {
+            var aggregates = Aggregates.CreateWith(new OrientDbEventStore());
+
             var productsQueries = new ProductQueries();
             var storesQueries = new StoreQueries();
             var deliveryQueries = new DeliveryQueries();
 
             _queries = new Queries(productsQueries, storesQueries, deliveryQueries);
+
+            // Normalerweise wird die Instanz in einem DI Container gespeichert, 
+            // um sie später von dort aus zu laden. Für unser Beispiel reicht es aus,
+            // die Instanz direkt zu verwenden
+            _warehouseCommands = new WarehouseCommands(aggregates);
         }
     }
 }

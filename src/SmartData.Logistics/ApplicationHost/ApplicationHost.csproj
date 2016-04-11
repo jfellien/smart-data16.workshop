@@ -48,15 +48,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApplicationContracts\ApplicationContracts.csproj">
       <Project>{5B9D8518-F885-4CA0-909F-8693A0B88A76}</Project>
       <Name>ApplicationContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ApplicationDomain\ApplicationDomain.csproj">
+      <Project>{10CA18AC-FD67-4A6B-A392-F1267447D2B0}</Project>
+      <Name>ApplicationDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApplicationQueries\ApplicationQueries.csproj">
       <Project>{5A1A987A-57CC-40BE-9765-60D772804BDC}</Project>
       <Name>ApplicationQueries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{A76A2F9A-BC64-41E4-8ED7-F255620CD077}</Project>
+      <Name>Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\ReadModel\ReadModel.csproj">
       <Project>{F215EECA-8B00-4287-B4D3-1BACF95E48AE}</Project>
@@ -71,4 +80,15 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == 'WindowsPhoneApp') Or ($(TargetFrameworkIdentifier) == '.NETCore') Or ($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1')) Or ($(TargetFrameworkIdentifier) == 'MonoAndroid') Or ($(TargetFrameworkIdentifier) == 'MonoTouch') Or ($(TargetFrameworkIdentifier) == 'Xamarin.iOS') Or ($(TargetFrameworkIdentifier) == 'Xamarin.Mac') Or ($(TargetFrameworkProfile) == 'Profile7') Or ($(TargetFrameworkProfile) == 'Profile32') Or ($(TargetFrameworkProfile) == 'Profile44') Or ($(TargetFrameworkProfile) == 'Profile111') Or ($(TargetFrameworkProfile) == 'Profile151')">
+      <ItemGroup>
+        <Reference Include="Fluent-CQRS">
+          <HintPath>..\packages\Fluent-CQRS\lib\portable-net45+netcore45+wpa81\Fluent-CQRS.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
 </Project>
