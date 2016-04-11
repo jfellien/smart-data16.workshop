@@ -4,7 +4,6 @@ var orientDb = require("orientjs");
 var dbServer = config.dbServer;
 var readModelConfig = config.readModelStore;
 
-
 var server = orientDb(
     {
         host: dbServer.host,
@@ -22,19 +21,37 @@ var readModel = server.use(
     }
 );
 
-
-exports.getProdukteDerKategorie = (req, res, next) => {
-    
-    var kategorie = req.params["kategorie"];
-    
+exports.allProducts = (req, res, next) => {
+        
     readModel
         .select()
-        .from("Produkt")
-        .where({Kategorie:kategorie})
-        .column("id")
+        .from("Product")
+        .column("Id")
         .column("Name")
-        .column("Preis")
-        .column("Kategorie")
+        .column("Price")
         .all()
         .then((produkte) => res.json(200, produkte));
+}
+
+exports.storeByPostZip = (req, res, next) => {
+    
+    var postzip = req.params["postzip"];
+    
+    readModel
+        .query("select Name, Id from Store where Out('responsible_for') contains (Value=:postzip)", {
+          params:{
+              postzip:postzip
+          }  
+        })
+        .then((store) => res.json(200, store));
+        
+}
+
+exports.deliverySuggestions = (req, res, next) => {
+    // Bitte selber ausfüllen :-)
+    
+    // Parameter aus dem Request lesen
+    // Query absetzen
+    // Ergebnisse zurückgeben
+    
 }

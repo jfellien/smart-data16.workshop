@@ -16,7 +16,13 @@ server.get("/api/events-for/:id", events.get);
 server.post("/api/event", events.store);
 
 // Setup ReadModel Routes
-server.get("/api/produkte-der-kategorie/:kategorie", readModel.getProdukteDerKategorie);
+server.get("/api/products", readModel.allProducts);
+server.get("/api/store-by-postzip/:postzip", readModel.storeByPostZip);
+
+/*
+    Für die Lieferterminvorschläge wird eine weitere Route benötigt
+    '/api/delivery-suggestions-by/:postzip/:productid'
+*/
 
 // Start Server
 server.listen(config.web.port,  () => {
@@ -24,7 +30,7 @@ server.listen(config.web.port,  () => {
 });
 
 ///
-/// Application configuration, which have to save in a server-config.json file
+/// Application configuration, you should save in a server-config.json file
 ///
 /// Sample
 /*

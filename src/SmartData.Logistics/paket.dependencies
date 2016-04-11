@@ -1,4 +1,5 @@
 source "https://nuget.org/api/v2"
 
 nuget fluent-cqrs
-nuget nunit ~> 2.6
+nuget Sigil = 4.5.0
+nuget Jil = 2.14.0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ApplicationContracts;
 using ApplicationQueries;
-using MockedRepositories;
+using ReadModel;
 
 namespace ApplicationHost
 {
@@ -107,9 +107,9 @@ namespace ApplicationHost
 
         static void Bootstrap()
         {
-            var productsQueries = new MockedProductQueries();
-            var storesQueries = new MockedStoresQueries();
-            var deliveryQueries = new MockedDeliveryQueries();
+            var productsQueries = new ProductQueries();
+            var storesQueries = new StoreQueries();
+            var deliveryQueries = new DeliveryQueries();
 
             _queries = new Queries(productsQueries, storesQueries, deliveryQueries);
         }

@@ -42,6 +42,23 @@ Für die Applikation werden zwei Datenbanken benötigt, ein EventStore und die D
     * Payload EMBEDDED Event
 
 #####ReadModel
+ 
+ * Die ReadModel DB wird wieder über `NewDB` als Graph angelegt (Standardeinstellung)
+ * Jede Entität bekommt eine eingen Klasse
+ * Product (SuperClass V)
+ 	* Id STRING
+ 	* Name STRING
+ 	* Price DOUBLE
+ * Store (SuperClass V)
+ 	* Id STRING
+ 	* Name STRING
+ * Postzip (SuperClass V)
+ 	* Value STRING
+ * Für die Beziehung zwischen Standort und Postleitzahl wird ein Edge benötigt
+ * responsible_for (SuperClass E)
+ 
+ * Einige Daten hinzufügen zu Postleitzahl und Lager
+ * Relationen herstellen, im Graphen
 
 ...
 

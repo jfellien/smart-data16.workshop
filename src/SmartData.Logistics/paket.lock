@@ -2,4 +2,6 @@ NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     Fluent-CQRS (2.0.4.2)
-    NUnit (2.6.4)
+    Jil (2.14)
+      Sigil (>= 4.5)
+    Sigil (4.5)

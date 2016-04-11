@@ -58,9 +58,9 @@
       <Project>{5A1A987A-57CC-40BE-9765-60D772804BDC}</Project>
       <Name>ApplicationQueries</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MockedRepositories\MockedRepositories.csproj">
-      <Project>{CE655D0E-DE1C-4D03-9371-7850B2575482}</Project>
-      <Name>MockedRepositories</Name>
+    <ProjectReference Include="..\ReadModel\ReadModel.csproj">
+      <Project>{F215EECA-8B00-4287-B4D3-1BACF95E48AE}</Project>
+      <Name>ReadModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
