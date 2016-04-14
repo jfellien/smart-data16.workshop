@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventBag.cs" />
     <Compile Include="OrientDbEventStore.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
