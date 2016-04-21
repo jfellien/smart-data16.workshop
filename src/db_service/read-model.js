@@ -55,3 +55,12 @@ exports.deliverySuggestions = (req, res, next) => {
     // Ergebnisse zurückgeben
     
 }
+
+exports.addProduct = (req, res, next) => {
+    readModel
+        .insert()
+        .into('Product')
+        .set(req.body)
+        .one()
+        .then((product) => res.json(200, product));
+}

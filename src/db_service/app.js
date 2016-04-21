@@ -18,6 +18,7 @@ server.post("/api/event", events.store);
 // Setup ReadModel Routes
 server.get("/api/products", readModel.allProducts);
 server.get("/api/store-by-postzip/:postzip", readModel.storeByPostZip);
+server.post("/api/product", readModel.addProduct);
 
 /*
     Für die Lieferterminvorschläge wird eine weitere Route benötigt

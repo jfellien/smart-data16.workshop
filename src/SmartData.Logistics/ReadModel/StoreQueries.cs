@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using ApplicationContracts;
 using ApplicationContracts.Queries;
@@ -10,10 +11,17 @@ namespace ReadModel
 {
     public class StoreQueries : IProvideStoresQueries
     {
+        private readonly string _baseUrl;
+
+        public StoreQueries()
+        {
+            _baseUrl = ConfigurationManager.AppSettings["DatabaseBaseUri"];
+        }
+
         public Store For(string postZip)
         {
             var getRequest = RestClient.AsJsonGetRequest(
-                new Uri("http://192.168.178.20:3000/api/store-by-postzip/" + postZip));
+                new Uri(_baseUrl + "/api/store-by-postzip/" + postZip));
 
             var getResponse = getRequest.Execute();
 

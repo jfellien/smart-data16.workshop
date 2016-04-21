@@ -132,6 +132,8 @@ namespace ApplicationHost
             // um sie später von dort aus zu laden. Für unser Beispiel reicht es aus,
             // die Instanz direkt zu verwenden
             _warehouseCommands = new WarehouseCommands(aggregates);
+
+            aggregates.PublishNewStateTo(new WarehouseEventHandler(_queries));
         }
     }
 }
