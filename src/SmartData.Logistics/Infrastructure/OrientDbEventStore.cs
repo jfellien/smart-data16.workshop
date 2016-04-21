@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using Fluent_CQRS;
 using Jil;
@@ -8,6 +9,13 @@ namespace Infrastructure
 {
     public class OrientDbEventStore : IStoreAndRetrieveEvents
     {
+        private readonly string _baseUrl;
+
+        public OrientDbEventStore()
+        {
+            _baseUrl = ConfigurationManager.AppSettings["DatabaseBaseUri"];
+        }
+
         public void StoreFor<TAggregate>(string aggegateId, IAmAnEventMessage eventMessage) where TAggregate : Aggregate
         {
             var serializedEvent = JSON.SerializeDynamic(eventMessage);
@@ -22,13 +30,13 @@ namespace Infrastructure
 
             var serializedEventBag = JSON.Serialize(eventBag);
 
-            var postEvent = RestClient.AsJsonPostRequest(new Uri("http://192.168.178.20:3000/api/event"));
+            var postEvent = RestClient.AsJsonPostRequest(new Uri(_baseUrl + "/api/event"));
             postEvent.Execute(serializedEventBag);
         }
 
         public IEnumerable<IAmAnEventMessage> RetrieveFor(string aggregateId)
         {
-            var getEvents = RestClient.AsJsonGetRequest(new Uri("http://192.168.178.20:3000/api/events-for/" + aggregateId));
+            var getEvents = RestClient.AsJsonGetRequest(new Uri(_baseUrl + "/api/events-for/" + aggregateId));
             var serializedEventBags = getEvents.Execute();
 
             var eventBags = JSON.Deserialize<List<EventBag>>(serializedEventBags);
